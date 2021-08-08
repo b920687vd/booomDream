@@ -1241,6 +1241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1621442879}
+  - component: {fileID: 1621442880}
   m_Layer: 5
   m_Name: uiLayer
   m_TagString: Untagged
@@ -1270,6 +1271,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1621442880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621442878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23517a295cdff141bac6cfff3bbaecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layout: {fileID: 186339978}
+  PopupButtonTip: {fileID: 221781380}
+  PopupDialog: {fileID: 295387400}
 --- !u!1 &1664446737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,6 +1609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1993443400}
+  - component: {fileID: 1993443401}
   m_Layer: 5
   m_Name: roomLayer
   m_TagString: Untagged
@@ -1621,6 +1638,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1993443401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993443399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa40f638750775c4c866a13b60b7d304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rooms:
+  - {fileID: 1408509597}
+  MainCharacter: {fileID: 412782508}
 --- !u!1 &2053801805
 GameObject:
   m_ObjectHideFlags: 0
