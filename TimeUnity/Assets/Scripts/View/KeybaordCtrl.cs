@@ -42,6 +42,10 @@ namespace TimeUnity.View{
             if(Input.GetKeyDown(GetKeyConfig().KeySkill)){
                 OnSkill();
             }
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                Screen.fullScreen = false;  //退出全屏
+            }
             if(isLeft){
                 OnLeft();
             }

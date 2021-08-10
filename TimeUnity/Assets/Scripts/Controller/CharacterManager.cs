@@ -21,7 +21,7 @@ namespace TimeUnity.Controller{
                 return RoomLayer.Ins.GetCurRoom();
             }
         }
-        public float speed = 1.5f;
+        public float speed = 3f;
         public float pos;
         public RoomItem curItem{
             get{
