@@ -15,6 +15,8 @@ namespace TimeUnity.Controller{
         }
         public void Init(){
             ButtonTipManager.Instance.Init();
+            CharacterManager.Instance.Init();
+            TimeLineManager.Instance.Init();
         }
     }
 }
