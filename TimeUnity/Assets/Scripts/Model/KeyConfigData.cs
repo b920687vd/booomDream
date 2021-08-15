@@ -6,5 +6,6 @@ namespace TimeUnity.Model{
         public KeyCode KeyRight;
         public KeyCode KeyUse;
         public KeyCode KeySkill;
+        public KeyCode KeyTip;
     }
 }

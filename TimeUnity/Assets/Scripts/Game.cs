@@ -6,7 +6,7 @@ using TimeUnity.Controller;
 namespace TimeUnity{
     public class Game:MonoBehaviour{
         //...
-        void Start(){
+        void Awake(){
             LoadManager();
         }
 
