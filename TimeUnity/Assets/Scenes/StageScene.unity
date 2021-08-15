@@ -720,6 +720,7 @@ MonoBehaviour:
   - {fileID: 1972069364}
   centerPoint: {fileID: 539371224}
   bgClock: {fileID: 804963509}
+  bgBlockPause: {fileID: 1413462247}
   isUpdating: 0
   testMin: 0
 --- !u!224 &514423700
