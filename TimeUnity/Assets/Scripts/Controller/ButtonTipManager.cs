@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using ButtonTipPopup = TimeUnity.View.ButtonTipPopup;
+using RoomItemData = TimeUnity.Model.RoomItemData;
 using UnityEngine;
 
 namespace TimeUnity.Controller{
@@ -17,6 +18,10 @@ namespace TimeUnity.Controller{
         }
 
         public string lastDesc;
+
+        public void SetTipByItem(string dataId){
+            RoomItemData itemData = RoomItemManager.Instance.GetItemData(dataId);
+        }
 
         public void SetTip(string key,string desc){
             if(lastDesc == key+desc)

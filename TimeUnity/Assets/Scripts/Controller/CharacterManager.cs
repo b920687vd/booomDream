@@ -60,7 +60,9 @@ namespace TimeUnity.Controller{
         }
 
         public void OnCharUse(){
-            //...
+            if(curItem==null)
+                return;
+            TimeLineManager.Instance.SwitchRegItem(curItem.dataId);
         }
 
         public void OnCharSkill(){

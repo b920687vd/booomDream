@@ -15,6 +15,8 @@ namespace TimeUnity.Controller{
         }
         public readonly int dotPerSec;
         public List<RoomItemData> timeItems;
+        public Dictionary<string,RoomItemData> timeItemDict;
+
         public float timeInSec{
             get{
                 return timeDot / dotPerSec ;
@@ -33,13 +35,40 @@ namespace TimeUnity.Controller{
         public float timeDot;
         public void Init(){
             //...
+            this.timeItems = new List<RoomItemData>();
+            this.timeItemDict = new Dictionary<string, RoomItemData>();
+        }
+
+        public void SwitchRegItem(string dataId){
+            if(this.timeItemDict.ContainsKey(dataId)){
+                this.RemoveActiveItem(dataId);
+            }else{
+                this.RegActiveItem(dataId);
+            }
+        }
+
+        public void RegActiveItem(string dataId){
+            RoomItemData itemData = RoomItemManager.Instance.GetItemData(dataId);
+            if(itemData == null)
+                return;
+            this.timeItems.Add(itemData);
+            if(!this.timeItemDict.ContainsKey(dataId)){
+                this.timeItemDict.Add(dataId,itemData);
+            }
+        }
+
+        public void RemoveActiveItem(string dataId){
+            if(!this.timeItemDict.ContainsKey(dataId))
+                return;
+            RoomItemData itemData = this.timeItemDict[dataId];
+            this.timeItems.Remove(itemData);
         }
 
         public void TimePast(int dot){
             foreach(var item in timeItems)
             {
-                if(item.status == RoomItemStatus.idle)
-                    continue;
+                // if(item.status == RoomItemStatus.idle)
+                //     continue;
                 item.timeActive += dot;
                 item.UpdateStatus();
             };
