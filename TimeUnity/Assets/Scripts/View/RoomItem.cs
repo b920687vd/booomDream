@@ -51,6 +51,7 @@ namespace TimeUnity.View{
                     data.status = RoomItemStatus.timeWaiting;
                 else if(data.status == RoomItemStatus.timeWaiting)
                     data.status = RoomItemStatus.idle;
+                this.SetStatus(data.status);
             };
         }
 
