@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using RoomItemStatus = TimeUnity.Model.RoomItemStatus;
 using RoomItemManager = TimeUnity.Controller.RoomItemManager;
@@ -11,17 +12,21 @@ namespace TimeUnity.View{
         // Start is called before the first frame update
         public SpriteFrameAnimator animator;
         public string dataId;
-        public bool canUse;
-        public bool hasTip;
-        public string tipKey;
+        public bool canUse = false;
+        public bool hasTip = false;
+        public string tipKey = "C";
         //是否需要角色同步等待
         public bool needWaiting = false;
+        public bool isSwitch = false;
         public float timeUsing = -1;
         public float timeError = -1;
         public float timeActive = 0;
         public RoomItemStatus status;
         public string buttonKey = "C";
         public string buttonDesc;
+        public string buttonDescClose;
+        public string buttonDescComplete;
+        public Action onUse;
         public float LeftSide{
             get
             {

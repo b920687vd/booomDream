@@ -26,11 +26,17 @@ namespace TimeUnity.Controller{
             string id = System.Guid.NewGuid().ToString();
             RoomItemData data = new RoomItemData(){
                 id = id,
+                canUse = itemView.canUse,
                 status = RoomItemStatus.idle,
                 needWaiting = itemView.needWaiting,
+                isSwitch = itemView.isSwitch,
                 timeUsing = itemView.timeUsing,
                 timeActive = itemView.timeActive,
-                timeError = itemView.timeError
+                timeError = itemView.timeError,
+                keyUse = itemView.buttonKey,
+                descUse = itemView.buttonDesc,
+                descClose = itemView.buttonDescClose,
+                descComplete = itemView.buttonDescComplete
             };
             this.roomItems.Add(id,data);
             this.roomItemViews.Add(id,itemView);

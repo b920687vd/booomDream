@@ -9,6 +9,7 @@ namespace TimeUnity.Model{
     }
     public class RoomItemData{
         public string id;
+        public bool canUse = false;
         public RoomItemStatus status = RoomItemStatus.idle;
         //是否需要角色同步等待
         public bool needWaiting = false;
