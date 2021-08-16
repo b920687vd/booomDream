@@ -44,7 +44,14 @@ namespace TimeUnity.View{
         }
         void Start()
         {
-            RoomItemManager.Instance.RegItem(this);
+            this.dataId = RoomItemManager.Instance.RegItem(this);
+            this.onUse = ()=>{
+                RoomItemData data = RoomItemManager.Instance.GetItemData(this.dataId);
+                if(data.status == RoomItemStatus.idle)
+                    data.status = RoomItemStatus.timeWaiting;
+                else if(data.status == RoomItemStatus.timeWaiting)
+                    data.status = RoomItemStatus.idle;
+            };
         }
 
         public void SetTime(float time){

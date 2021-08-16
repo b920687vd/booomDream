@@ -53,7 +53,7 @@ namespace TimeUnity.Controller{
             MainCharacter.Ins.UpdatePos(pos);
             RoomItem hasItem = curItem;
             if(hasItem != null){
-                ButtonTipManager.Instance.SetTip(hasItem.buttonKey,hasItem.buttonDesc);
+                ButtonTipManager.Instance.SetTipByItem(hasItem.dataId);
             }else{
                 ButtonTipManager.Instance.ClearTip();
             }
@@ -62,7 +62,9 @@ namespace TimeUnity.Controller{
         public void OnCharUse(){
             if(curItem==null)
                 return;
+            curItem.onUse();
             TimeLineManager.Instance.SwitchRegItem(curItem.dataId);
+            ButtonTipManager.Instance.SetTipByItem(curItem.dataId);
         }
 
         public void OnCharSkill(){

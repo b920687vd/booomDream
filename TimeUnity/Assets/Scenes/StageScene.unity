@@ -894,16 +894,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   dataId: 
-  canUse: 0
+  canUse: 1
   hasTip: 0
   tipKey: 
   needWaiting: 0
+  isSwitch: 1
   timeUsing: -1
   timeError: -1
   timeActive: 0
   status: 0
   buttonKey: C
   buttonDesc: "\u7761\u89C9"
+  buttonDescClose: "\u8D77\u5E8A"
+  buttonDescComplete: "\u7761\u9971"
 --- !u!114 &549699674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1480,12 +1483,15 @@ MonoBehaviour:
   hasTip: 0
   tipKey: 
   needWaiting: 0
+  isSwitch: 0
   timeUsing: -1
   timeError: -1
   timeActive: 0
   status: 0
   buttonKey: C
-  buttonDesc: "\u5173\u95ED\u95F9\u949F"
+  buttonDesc: "\u5B9A\u65F6"
+  buttonDescClose: "\u53D6\u6D88\u5B9A\u65F6"
+  buttonDescComplete: "\u5173\u95ED\u95F9\u949F"
 --- !u!114 &884652985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2277,12 +2283,15 @@ MonoBehaviour:
   hasTip: 0
   tipKey: 
   needWaiting: 0
+  isSwitch: 0
   timeUsing: -1
   timeError: -1
   timeActive: 0
   status: 0
-  buttonKey: 
-  buttonDesc: 
+  buttonKey: C
+  buttonDesc: "\u64E6\u62ED"
+  buttonDescClose: "\u505C\u6B62"
+  buttonDescComplete: "\u64E6\u62ED\u5B8C\u6210"
 --- !u!114 &1679905671
 MonoBehaviour:
   m_ObjectHideFlags: 0

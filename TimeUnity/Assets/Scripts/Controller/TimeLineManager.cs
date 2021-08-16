@@ -45,6 +45,7 @@ namespace TimeUnity.Controller{
             }else{
                 this.RegActiveItem(dataId);
             }
+            Debug.Log(this.timeItems.Count);
         }
 
         public void RegActiveItem(string dataId){
