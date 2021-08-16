@@ -854,6 +854,7 @@ GameObject:
   - component: {fileID: 549699675}
   - component: {fileID: 549699674}
   - component: {fileID: 549699673}
+  - component: {fileID: 549699676}
   m_Layer: 5
   m_Name: item_bed
   m_TagString: Untagged
@@ -892,7 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263b17c6c8a50a643a2be9ff9d027a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 549699676}
   dataId: 
   canUse: 1
   hasTip: 0
@@ -945,6 +946,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549699671}
   m_CullTransparentMesh: 1
+--- !u!114 &549699676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549699671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60916da740159f8419222ed326bdbc48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 549699674}
+  statusList:
+  - key: idle
+    timePerFrame: 100
+    images:
+    - {fileID: 21300000, guid: 3271b8dec64cf09449544a245fd504cf, type: 3}
+  - key: timeWaiting
+    timePerFrame: 100
+    images:
+    - {fileID: 21300000, guid: 1351a5f5016d9e04bb5f535a6f42dc10, type: 3}
 --- !u!1 &739776656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,9 +1500,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263b17c6c8a50a643a2be9ff9d027a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 884652987}
   dataId: 
-  canUse: 0
+  canUse: 1
   hasTip: 0
   tipKey: 
   needWaiting: 0
