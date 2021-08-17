@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TimeUnity.Controller;
 
 namespace TimeUnity.View{
     public class MainCharacter : MonoBehaviour
@@ -12,9 +13,18 @@ namespace TimeUnity.View{
         }
 
         // Update is called once per frame
+        protected float timeCount;
         void Update()
         {
-            
+            if(CharacterManager.Instance.isUsing){
+                this.timeCount += Time.deltaTime;
+                if(this.timeCount>0.2f){
+                    TimeLineManager.Instance.TimePast(1);
+                    this.timeCount-=0.2f;
+                }
+            }else{
+                this.timeCount = 0;
+            }
         }
 
         public void UpdatePos(float pos){

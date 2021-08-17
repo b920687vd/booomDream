@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using RoomItemManager = TimeUnity.Controller.RoomItemManager;
+using RoomItemData = TimeUnity.Model.RoomItemData;
 
 namespace TimeUnity.View{
     public class Room:MonoBehaviour{
@@ -22,10 +24,10 @@ namespace TimeUnity.View{
         public bool IsInRoom(Vector3 p){
             return p.x < RightSide && p.x > LeftSide;
         }
-        public RoomItem CanUseItem(Vector3 p){
+        public RoomItemData CanUseItem(Vector3 p){
             for(int i=0;i<items.Count;i++){
                 if(items[i].IsBetweenItem(p-transform.localPosition)){
-                    return items[i];
+                    return RoomItemManager.Instance.GetItemData(items[i].dataId);
                 }
             }
             return null;

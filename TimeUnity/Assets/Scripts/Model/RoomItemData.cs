@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 namespace TimeUnity.Model{
     public enum RoomItemStatus{
@@ -21,6 +22,9 @@ namespace TimeUnity.Model{
         public string descUse;
         public string descClose;
         public string descComplete;
+        public Action onUse;
+        public Action onPause;
+        public Action onComplete;
         public RoomItemStatus UpdateStatus(){
             if(this.isSwitch)
                 return this.status;
@@ -32,6 +36,17 @@ namespace TimeUnity.Model{
                 this.status = RoomItemStatus.timeOver;
             }
             return this.status;
+        }
+
+        public void initAfter(){
+            if(this.onUse == null){
+                this.onUse = ()=>{
+                    if(this.status == RoomItemStatus.idle)
+                        this.status = RoomItemStatus.timeWaiting;
+                    else if(this.status == RoomItemStatus.timeWaiting)
+                        this.status = RoomItemStatus.idle;
+                };
+            }
         }
     }
 }

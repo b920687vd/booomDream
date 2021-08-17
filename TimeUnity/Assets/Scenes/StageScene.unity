@@ -898,7 +898,7 @@ MonoBehaviour:
   canUse: 1
   hasTip: 0
   tipKey: 
-  needWaiting: 0
+  needWaiting: 1
   isSwitch: 1
   timeUsing: -1
   timeError: -1
@@ -1507,7 +1507,7 @@ MonoBehaviour:
   tipKey: 
   needWaiting: 0
   isSwitch: 0
-  timeUsing: -1
+  timeUsing: 10
   timeError: -1
   timeActive: 0
   status: 0
@@ -1572,6 +1572,10 @@ MonoBehaviour:
     images:
     - {fileID: 21300000, guid: bdc9fb963ced8e9448891fb44d19f65f, type: 3}
   - key: timeWaiting
+    timePerFrame: 0.4
+    images:
+    - {fileID: 21300000, guid: 95e1f57d9ae441445ace97f5e133d933, type: 3}
+  - key: timeOver
     timePerFrame: 0.4
     images:
     - {fileID: 21300000, guid: bdc9fb963ced8e9448891fb44d19f65f, type: 3}

@@ -3,6 +3,7 @@ using MainCharacter = TimeUnity.View.MainCharacter;
 using Room = TimeUnity.View.Room;
 using RoomLayer = TimeUnity.View.RoomLayer;
 using RoomItem = TimeUnity.View.RoomItem;
+using RoomItemData = TimeUnity.Model.RoomItemData;
 
 namespace TimeUnity.Controller{
     public class CharacterManager{
@@ -23,7 +24,8 @@ namespace TimeUnity.Controller{
         }
         public float speed = 3f;
         public float pos;
-        public RoomItem curItem{
+        public bool isUsing;
+        public RoomItemData curItem{
             get{
                 return curRoom.CanUseItem(new Vector3(pos,0,0));
             }
@@ -34,6 +36,8 @@ namespace TimeUnity.Controller{
 
         public void OnCharLeft(){
             //...
+            if(this.isUsing)
+                return;
             if(pos > curRoom.LeftSide + 100){
                 pos -= speed;
                 UpdatePos();
@@ -43,6 +47,8 @@ namespace TimeUnity.Controller{
 
         public void OnCharRight(){
             //...
+            if(this.isUsing)
+                return;
             if(pos < curRoom.RightSide - 100){
                 pos += speed;
                 UpdatePos();
@@ -51,9 +57,9 @@ namespace TimeUnity.Controller{
 
         public void UpdatePos(){
             MainCharacter.Ins.UpdatePos(pos);
-            RoomItem hasItem = curItem;
+            RoomItemData hasItem = curItem;
             if(hasItem != null){
-                ButtonTipManager.Instance.SetTipByItem(hasItem.dataId);
+                ButtonTipManager.Instance.SetTipByItem(hasItem.id);
             }else{
                 ButtonTipManager.Instance.ClearTip();
             }
@@ -63,8 +69,11 @@ namespace TimeUnity.Controller{
             if(curItem==null)
                 return;
             curItem.onUse();
-            TimeLineManager.Instance.SwitchRegItem(curItem.dataId);
-            ButtonTipManager.Instance.SetTipByItem(curItem.dataId);
+            if(curItem.needWaiting){
+                this.isUsing = !this.isUsing;
+            }
+            TimeLineManager.Instance.SwitchRegItem(curItem.id);
+            ButtonTipManager.Instance.SetTipByItem(curItem.id);
         }
 
         public void OnCharSkill(){

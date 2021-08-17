@@ -36,8 +36,12 @@ namespace TimeUnity.Controller{
                 keyUse = itemView.buttonKey,
                 descUse = itemView.buttonDesc,
                 descClose = itemView.buttonDescClose,
-                descComplete = itemView.buttonDescComplete
+                descComplete = itemView.buttonDescComplete,
+                onUse = itemView.onUse,
+                onPause = itemView.onPause,
+                onComplete = itemView.onComplete
             };
+            data.initAfter();
             this.roomItems.Add(id,data);
             this.roomItemViews.Add(id,itemView);
             return id;
@@ -46,6 +50,13 @@ namespace TimeUnity.Controller{
             if(!this.roomItems.ContainsKey(id))
                 return null;
             return this.roomItems[id];
+        }
+        public void UpdateView(){
+            //...
+            RoomItem[] items = CharacterManager.Instance.curRoom.items.ToArray();
+            foreach(RoomItem i in items){
+                i.UpdateStatus();
+            }
         }
     }
 }

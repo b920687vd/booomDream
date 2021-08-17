@@ -16,15 +16,16 @@ namespace TimeUnity.Controller{
         public readonly int dotPerSec;
         public List<RoomItemData> timeItems;
         public Dictionary<string,RoomItemData> timeItemDict;
+        public Action<int> actionTimeUpdate;
 
         public float timeInSec{
             get{
                 return timeDot / dotPerSec ;
             }
         }
-        public float timeInMin{
+        public int timeInMin{
             get{
-                return timeInSec/ 60f;
+                return Mathf.FloorToInt(timeDot);
             }
         }
         public float timeInHour{
@@ -66,6 +67,7 @@ namespace TimeUnity.Controller{
         }
 
         public void TimePast(int dot){
+            this.timeDot+=dot;
             foreach(var item in timeItems)
             {
                 // if(item.status == RoomItemStatus.idle)
@@ -73,6 +75,12 @@ namespace TimeUnity.Controller{
                 item.timeActive += dot;
                 item.UpdateStatus();
             };
+            RoomItemManager.Instance.UpdateView();
+            this.actionTimeUpdate(this.timeInMin);
+        }
+
+        public void Update(float delta){
+            //...
         }
     }
 }

@@ -27,6 +27,8 @@ namespace TimeUnity.View{
         public string buttonDescClose;
         public string buttonDescComplete;
         public Action onUse;
+        public Action onPause;
+        public Action onComplete;
         public float LeftSide{
             get
             {
@@ -44,7 +46,6 @@ namespace TimeUnity.View{
         }
         void Start()
         {
-            this.dataId = RoomItemManager.Instance.RegItem(this);
             this.onUse = ()=>{
                 RoomItemData data = RoomItemManager.Instance.GetItemData(this.dataId);
                 if(data.status == RoomItemStatus.idle)
@@ -53,6 +54,7 @@ namespace TimeUnity.View{
                     data.status = RoomItemStatus.idle;
                 this.SetStatus(data.status);
             };
+            this.dataId = RoomItemManager.Instance.RegItem(this);
         }
 
         public void SetTime(float time){
@@ -67,6 +69,7 @@ namespace TimeUnity.View{
         public void UpdateStatus(){
             RoomItemData data = RoomItemManager.Instance.GetItemData(this.dataId);
             if(data!=null)
+            this.SetTime(data.timeActive);
             this.SetStatus(data.UpdateStatus());
         }
 

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
+using TimeUnity.Controller;
 
 namespace TimeUnity.View{
     public class UIClock:MonoBehaviour{
@@ -15,11 +16,16 @@ namespace TimeUnity.View{
         void Start(){
             this.SetTimeInMin(0);
             this.SetUpdating(false);
+            TimeLineManager.Instance.actionTimeUpdate += this.TimeUpdate;
         }
         public void TestTime(){
             //...
             this.testMin += 4;
             this.SetTimeInMin(this.testMin);
+        }
+        public void TimeUpdate(int min){
+            this.testMin = min;
+            this.SetTimeInMin(min);
         }
         public void SetUpdating(bool isActive){
             this.isUpdating = isActive;
