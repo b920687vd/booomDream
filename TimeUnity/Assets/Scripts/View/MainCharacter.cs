@@ -19,7 +19,7 @@ namespace TimeUnity.View{
             if(CharacterManager.Instance.isUsing){
                 this.timeCount += Time.deltaTime;
                 if(this.timeCount>0.2f){
-                    TimeLineManager.Instance.TimePast(1);
+                    CharacterManager.Instance.UsingTimePast(1);
                     this.timeCount-=0.2f;
                 }
             }else{

@@ -68,13 +68,29 @@ namespace TimeUnity.Controller{
         public void OnCharUse(){
             if(curItem==null)
                 return;
-            curItem.onUse();
-            if(curItem.needWaiting){
-                this.isUsing = !this.isUsing;
-                TimeLineManager.Instance.uiClock.SetUpdating(this.isUsing);
+            if(curItem.status == Model.RoomItemStatus.idle || curItem.status == Model.RoomItemStatus.timeWaiting){
+                curItem.onUse();
+                if(curItem.needWaiting){
+                    SetUsing(!this.isUsing);
+                }
+                TimeLineManager.Instance.SwitchRegItem(curItem.id);
+            }else if(curItem.status == Model.RoomItemStatus.timeOver){
+                curItem.onComplete();
             }
-            TimeLineManager.Instance.SwitchRegItem(curItem.id);
             ButtonTipManager.Instance.SetTipByItem(curItem.id);
+        }
+
+        public void UsingTimePast(int min){
+            TimeLineManager.Instance.TimePast(min);
+            if(curItem.needWaiting && curItem.status == Model.RoomItemStatus.timeOver){
+                SetUsing(!this.isUsing);
+            }
+            ButtonTipManager.Instance.SetTipByItem(curItem.id);
+        }
+
+        public void SetUsing(bool s){
+            this.isUsing = s;
+            TimeLineManager.Instance.SetUpdating(this.isUsing);
         }
 
         public void OnCharSkill(){

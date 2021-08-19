@@ -80,6 +80,10 @@ namespace TimeUnity.Controller{
             this.actionTimeUpdate(this.timeInMin);
         }
 
+        public void SetUpdating(bool isUpdating){
+            this.uiClock.SetUpdating(isUpdating);
+        }
+
         public void Update(float delta){
             //...
         }

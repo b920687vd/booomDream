@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using TimeUnity.Controller;
 
 namespace TimeUnity.Model
 {
@@ -60,11 +61,11 @@ namespace TimeUnity.Model
         public Action<RoomItemStatus> onUpdateStatus;
         public void UpdateStatus()
         {
-            if (this.timeActive > this.timeError && this.timeError > 0)
+            if (this.timeActive >= this.timeError && this.timeError > 0)
             {
                 this.status = RoomItemStatus.error;
             }
-            else if (this.timeActive > this.timeUsing && this.timeUsing > 0)
+            else if (this.timeActive >= this.timeUsing && this.timeUsing > 0)
             {
                 this.status = RoomItemStatus.timeOver;
             }
@@ -80,6 +81,11 @@ namespace TimeUnity.Model
                         this.status = RoomItemStatus.timeWaiting;
                     else if (this.status == RoomItemStatus.timeWaiting)
                         this.status = RoomItemStatus.idle;
+                };
+            }
+            if(this.onComplete == null){
+                this.onComplete = ()=>{
+                    //...
                 };
             }
         }

@@ -17,6 +17,7 @@ namespace TimeUnity.View{
         protected int curFrameIndex;
         public List<FrameStatus> statusList;
         protected Dictionary<string,FrameStatus> status;
+        protected string lastStatus;
         public FrameStatus curStatus{
             get{
                 return this.status[this.curStatusKey];
@@ -25,7 +26,12 @@ namespace TimeUnity.View{
         public void PlayStatus(string statusKey){
             if(!this.status.ContainsKey(statusKey))
                 return;
+            if(this.curStatusKey == statusKey){
+                return;
+            }
             this.curStatusKey = statusKey;
+            this.curFrameCount = 0;
+            this.curFrameIndex = 0;
         }
 
         void Start(){
@@ -47,6 +53,7 @@ namespace TimeUnity.View{
                 if(this.curFrameIndex >= this.curStatus.images.Count){
                     this.curFrameIndex = 0;
                 }
+                this.curFrameCount = 0;
             }
             this.image.sprite = this.curStatus.images[this.curFrameIndex];
         }
