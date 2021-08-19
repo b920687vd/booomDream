@@ -1,14 +1,17 @@
 using UnityEngine;
 using System;
 
-namespace TimeUnity.Model{
-    public enum RoomItemStatus{
+namespace TimeUnity.Model
+{
+    public enum RoomItemStatus
+    {
         idle,
         timeWaiting,
         timeOver,
         error,
     }
-    public class RoomItemData{
+    public class RoomItemData
+    {
         public string id;
         public bool canUse = false;
         public RoomItemStatus status = RoomItemStatus.idle;
@@ -22,28 +25,54 @@ namespace TimeUnity.Model{
         public string descUse;
         public string descClose;
         public string descComplete;
+
+        public RoomItemData cloneConfig()
+        {
+            return new RoomItemData()
+            {
+                canUse = this.canUse,
+                status = RoomItemStatus.idle,
+                needWaiting = this.needWaiting,
+                isSwitch = this.isSwitch,
+                timeUsing = this.timeUsing,
+                timeActive = 0,
+                timeError = this.timeError,
+                keyUse = this.keyUse,
+                descUse = this.descUse,
+                descClose = this.descClose,
+                descComplete = this.descComplete,
+            };
+        }
+
         public Action onUse;
         public Action onPause;
         public Action onComplete;
-        public RoomItemStatus UpdateStatus(){
-            if(this.isSwitch)
+        public RoomItemStatus UpdateStatus()
+        {
+            if (this.isSwitch)
                 return this.status;
-            if(this.status == RoomItemStatus.idle||this.status == RoomItemStatus.error)
+            if (this.status == RoomItemStatus.idle || this.status == RoomItemStatus.error)
                 return this.status;
-            if(this.timeActive > this.timeError && this.timeError>0){
+            if (this.timeActive > this.timeError && this.timeError > 0)
+            {
                 this.status = RoomItemStatus.error;
-            }else if(this.timeActive > this.timeUsing && this.timeUsing > 0){
+            }
+            else if (this.timeActive > this.timeUsing && this.timeUsing > 0)
+            {
                 this.status = RoomItemStatus.timeOver;
             }
             return this.status;
         }
 
-        public void initAfter(){
-            if(this.onUse == null){
-                this.onUse = ()=>{
-                    if(this.status == RoomItemStatus.idle)
+        public void initAfter()
+        {
+            if (this.onUse == null)
+            {
+                this.onUse = () =>
+                {
+                    if (this.status == RoomItemStatus.idle)
                         this.status = RoomItemStatus.timeWaiting;
-                    else if(this.status == RoomItemStatus.timeWaiting)
+                    else if (this.status == RoomItemStatus.timeWaiting)
                         this.status = RoomItemStatus.idle;
                 };
             }
