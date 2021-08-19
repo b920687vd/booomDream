@@ -17,6 +17,7 @@ namespace TimeUnity.View{
             this.SetTimeInMin(0);
             this.SetUpdating(false);
             TimeLineManager.Instance.actionTimeUpdate += this.TimeUpdate;
+            TimeLineManager.Instance.uiClock = this;
         }
         public void TestTime(){
             //...

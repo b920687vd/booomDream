@@ -1,0 +1,4 @@
+id,canUse,needWaiting,isSwitch,timeUsing,timeError,keyUse,descUse,descClose,descComplete
+bed,1,1,1,-1,-1,C,睡觉,起床,
+clock,1,0,1,10,-1,C,定时,取消定时,关闭闹钟
+desk,0,0,0,-1,-1,,,,

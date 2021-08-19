@@ -71,6 +71,7 @@ namespace TimeUnity.Controller{
             curItem.onUse();
             if(curItem.needWaiting){
                 this.isUsing = !this.isUsing;
+                TimeLineManager.Instance.uiClock.SetUpdating(this.isUsing);
             }
             TimeLineManager.Instance.SwitchRegItem(curItem.id);
             ButtonTipManager.Instance.SetTipByItem(curItem.id);

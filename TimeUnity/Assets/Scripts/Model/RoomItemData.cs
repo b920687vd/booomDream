@@ -14,7 +14,17 @@ namespace TimeUnity.Model
     {
         public string id;
         public bool canUse = false;
-        public RoomItemStatus status = RoomItemStatus.idle;
+        protected RoomItemStatus _curStatus = RoomItemStatus.idle;
+        public RoomItemStatus status{
+            get{
+                return _curStatus;
+            }set{
+                if(_curStatus!=value){
+                    _curStatus = value;
+                    onUpdateStatus(value);
+                }
+            }
+        }
         //是否需要角色同步等待
         public bool needWaiting = false;
         public bool isSwitch = false;
@@ -47,12 +57,9 @@ namespace TimeUnity.Model
         public Action onUse;
         public Action onPause;
         public Action onComplete;
-        public RoomItemStatus UpdateStatus()
+        public Action<RoomItemStatus> onUpdateStatus;
+        public void UpdateStatus()
         {
-            if (this.isSwitch)
-                return this.status;
-            if (this.status == RoomItemStatus.idle || this.status == RoomItemStatus.error)
-                return this.status;
             if (this.timeActive > this.timeError && this.timeError > 0)
             {
                 this.status = RoomItemStatus.error;
@@ -61,7 +68,6 @@ namespace TimeUnity.Model
             {
                 this.status = RoomItemStatus.timeOver;
             }
-            return this.status;
         }
 
         public void initAfter()

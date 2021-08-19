@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using TimeUnity.Model;
+using TimeUnity.View;
 
 namespace TimeUnity.Controller{
     public class TimeLineManager{
@@ -17,6 +18,7 @@ namespace TimeUnity.Controller{
         public List<RoomItemData> timeItems;
         public Dictionary<string,RoomItemData> timeItemDict;
         public Action<int> actionTimeUpdate;
+        public UIClock uiClock;
 
         public float timeInSec{
             get{
@@ -46,7 +48,6 @@ namespace TimeUnity.Controller{
             }else{
                 this.RegActiveItem(dataId);
             }
-            Debug.Log(this.timeItems.Count);
         }
 
         public void RegActiveItem(string dataId){

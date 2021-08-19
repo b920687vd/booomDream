@@ -21,7 +21,6 @@ namespace TimeUnity.Controller{
 
         public void SetTipByItem(string dataId){
             RoomItemData itemData = RoomItemManager.Instance.GetItemData(dataId);
-            Debug.Log("set Tip "+itemData.id);
             if(itemData == null)
                 return;
             switch(itemData.status){

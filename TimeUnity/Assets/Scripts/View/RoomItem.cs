@@ -11,24 +11,10 @@ namespace TimeUnity.View{
     {
         // Start is called before the first frame update
         public SpriteFrameAnimator animator;
+        public string configId;
+        [NonSerialized]
         public string dataId;
-        public bool canUse = false;
-        public bool hasTip = false;
-        public string tipKey = "C";
-        //是否需要角色同步等待
-        public bool needWaiting = false;
-        public bool isSwitch = false;
-        public float timeUsing = -1;
-        public float timeError = -1;
-        public float timeActive = 0;
         public RoomItemStatus status;
-        public string buttonKey = "C";
-        public string buttonDesc;
-        public string buttonDescClose;
-        public string buttonDescComplete;
-        public Action onUse;
-        public Action onPause;
-        public Action onComplete;
         public float LeftSide{
             get
             {
@@ -46,19 +32,9 @@ namespace TimeUnity.View{
         }
         void Start()
         {
-            this.onUse = ()=>{
-                RoomItemData data = RoomItemManager.Instance.GetItemData(this.dataId);
-                if(data.status == RoomItemStatus.idle)
-                    data.status = RoomItemStatus.timeWaiting;
-                else if(data.status == RoomItemStatus.timeWaiting)
-                    data.status = RoomItemStatus.idle;
-                this.SetStatus(data.status);
-            };
             this.dataId = RoomItemManager.Instance.RegItem(this);
-        }
-
-        public void SetTime(float time){
-            this.timeActive = time;
+            RoomItemData data = RoomItemManager.Instance.GetItemData(this.dataId);
+        data.onUpdateStatus += this.SetStatus;
         }
 
         public void SetStatus(RoomItemStatus status){
@@ -69,8 +45,7 @@ namespace TimeUnity.View{
         public void UpdateStatus(){
             RoomItemData data = RoomItemManager.Instance.GetItemData(this.dataId);
             if(data!=null)
-            this.SetTime(data.timeActive);
-            this.SetStatus(data.UpdateStatus());
+            this.SetStatus(data.status);
         }
 
         // Update is called once per frame

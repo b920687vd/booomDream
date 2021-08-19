@@ -33,16 +33,16 @@ namespace TimeUnity.Controller
             configRoomItemData = new Dictionary<string, RoomItemData>();
             CSVReader reader = new CSVReader();
             reader.ReadFile("Resources/Config/roomItems.csv");
-            for (int i = reader.Length; i >= 0; i--)
+            for (int i = reader.Length-1; i >= 0; i--)
             {
                 RoomItemData item = new RoomItemData()
                 {
                     ///
                     id = reader.GetValue("id", i),
-                    canUse = reader.GetValue("canUse", i) == "true",
+                    canUse = reader.GetValue("canUse", i) == "1",
                     status = RoomItemStatus.idle,
-                    needWaiting = reader.GetValue("needWaiting", i) == "true",
-                    isSwitch = reader.GetValue("isSwitch", i) == "true",
+                    needWaiting = reader.GetValue("needWaiting", i) == "1",
+                    isSwitch = reader.GetValue("isSwitch", i) == "1",
                     timeUsing = int.Parse(reader.GetValue("timeUsing", i)),
                     timeActive = 0,
                     timeError = int.Parse(reader.GetValue("timeError", i)),

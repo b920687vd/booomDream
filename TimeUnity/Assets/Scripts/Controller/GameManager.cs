@@ -14,6 +14,7 @@ namespace TimeUnity.Controller{
             }
         }
         public void Init(){
+            ConfigManager.Instance.Init();
             RoomItemManager.Instance.Init();
             ButtonTipManager.Instance.Init();
             CharacterManager.Instance.Init();

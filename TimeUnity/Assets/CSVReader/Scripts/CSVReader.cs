@@ -26,7 +26,7 @@ namespace TimeUnity.Utils
         public void ReadFile(string path)
         {
             m_csvData = new string[0][];
-            string fillPath = CSVReader.FillPath + path;
+            string fillPath = CSVReader.FillPath +"/"+ path;
             string[] lines = new string[] { };
             try
             {
@@ -34,7 +34,7 @@ namespace TimeUnity.Utils
             }
             catch
             {
-                Debug.LogError("No File: " + path);
+                Debug.LogError("No File: " + fillPath);
             }
 
             m_csvData = new string[lines.Length - 1][];
@@ -44,10 +44,11 @@ namespace TimeUnity.Utils
             }
             keys = new Dictionary<string, int>();
             string[] keyLine = lines[0].Split(',');
-            for (int i = 0; i < keyLine.Length; i--)
+            for (int i = 0; i < keyLine.Length; i++)
             {
                 keys.Add(keyLine[i], i);
             }
+            Debug.Log("Config Loaded "+m_csvData.Length+" "+keys.Keys.Count);
         }
 
         public string GetValue(string key, int index)
@@ -56,7 +57,7 @@ namespace TimeUnity.Utils
                 return null;
             if (!keys.ContainsKey(key))
                 return null;
-            return m_csvData[keys[key]][index];
+            return m_csvData[index][keys[key]];
         }
     }
 }

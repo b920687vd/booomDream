@@ -24,23 +24,8 @@ namespace TimeUnity.Controller{
         }
         public string RegItem(RoomItem itemView){
             string id = System.Guid.NewGuid().ToString();
-            RoomItemData data = new RoomItemData(){
-                id = id,
-                canUse = itemView.canUse,
-                status = RoomItemStatus.idle,
-                needWaiting = itemView.needWaiting,
-                isSwitch = itemView.isSwitch,
-                timeUsing = itemView.timeUsing,
-                timeActive = itemView.timeActive,
-                timeError = itemView.timeError,
-                keyUse = itemView.buttonKey,
-                descUse = itemView.buttonDesc,
-                descClose = itemView.buttonDescClose,
-                descComplete = itemView.buttonDescComplete,
-                onUse = itemView.onUse,
-                onPause = itemView.onPause,
-                onComplete = itemView.onComplete
-            };
+            RoomItemData data = ConfigManager.Instance.GetRoomItemConfig(itemView.configId);
+            data.id = id;
             data.initAfter();
             this.roomItems.Add(id,data);
             this.roomItemViews.Add(id,itemView);
