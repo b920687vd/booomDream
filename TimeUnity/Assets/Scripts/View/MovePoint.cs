@@ -14,6 +14,7 @@ namespace TimeUnity.View{
             data.onUse = ()=>{
                 CharacterManager.Instance.CharMoveTo(moveAim.transform.localPosition + moveAim.transform.parent.localPosition);
             };
+            this.animator.PlayStatus("idle");
         }
 
         public override void SetStatus(RoomItemStatus status){

@@ -24,6 +24,9 @@ namespace TimeUnity.View{
             }
         }
         public void PlayStatus(string statusKey){
+            if(this.status == null){
+                Start();
+            }
             if(!this.status.ContainsKey(statusKey))
                 return;
             if(this.curStatusKey == statusKey){
