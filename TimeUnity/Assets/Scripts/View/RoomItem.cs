@@ -34,7 +34,9 @@ namespace TimeUnity.View{
         {
             this.dataId = RoomItemManager.Instance.RegItem(this);
             RoomItemData data = RoomItemManager.Instance.GetItemData(this.dataId);
-        data.onUpdateStatus += this.SetStatus;
+            data.onUpdateStatus += this.SetStatus;
+            if(this.animator == null)
+                this.animator = gameObject.GetComponent<SpriteFrameAnimator>();
         }
 
         public virtual void SetStatus(RoomItemStatus status){
