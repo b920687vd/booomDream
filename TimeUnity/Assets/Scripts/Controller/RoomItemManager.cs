@@ -38,8 +38,7 @@ namespace TimeUnity.Controller{
         }
         public void UpdateView(){
             //...
-            RoomItem[] items = CharacterManager.Instance.curRoom.items.ToArray();
-            foreach(RoomItem i in items){
+            foreach(RoomItem i in roomItemViews.Values){
                 if(this.roomItems[i.dataId].canUse)
                     i.UpdateStatus();
             }

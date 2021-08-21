@@ -93,6 +93,11 @@ namespace TimeUnity.Controller{
             TimeLineManager.Instance.SetUpdating(this.isUsing);
         }
 
+        public void CharMoveTo(Vector3 pos){
+            this.pos = pos.x;
+            UpdatePos();
+        }
+
         public void OnCharSkill(){
             //...
         }

@@ -13,6 +13,7 @@ namespace TimeUnity.View{
         void Start()
         {
             RoomLayer.Ins = this;
+            this.rooms = new List<Room>(gameObject.GetComponentsInChildren<Room>());
         }
 
         // Update is called once per frame
