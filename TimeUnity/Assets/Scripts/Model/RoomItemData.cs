@@ -22,6 +22,7 @@ namespace TimeUnity.Model
             }set{
                 if(_curStatus!=value){
                     _curStatus = value;
+                    if(this.canUse)
                     onUpdateStatus(value);
                 }
             }

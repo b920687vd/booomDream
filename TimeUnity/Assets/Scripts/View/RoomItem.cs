@@ -37,12 +37,12 @@ namespace TimeUnity.View{
         data.onUpdateStatus += this.SetStatus;
         }
 
-        public void SetStatus(RoomItemStatus status){
+        public virtual void SetStatus(RoomItemStatus status){
             this.status = status;
             this.animator.PlayStatus(this.status.ToString());
         }
 
-        public void UpdateStatus(){
+        public virtual void UpdateStatus(){
             RoomItemData data = RoomItemManager.Instance.GetItemData(this.dataId);
             if(data!=null)
             this.SetStatus(data.status);

@@ -40,7 +40,8 @@ namespace TimeUnity.Controller{
             //...
             RoomItem[] items = CharacterManager.Instance.curRoom.items.ToArray();
             foreach(RoomItem i in items){
-                i.UpdateStatus();
+                if(this.roomItems[i.dataId].canUse)
+                    i.UpdateStatus();
             }
         }
     }

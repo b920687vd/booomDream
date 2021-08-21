@@ -7,6 +7,10 @@ using RoomItemData = TimeUnity.Model.RoomItemData;
 
 namespace TimeUnity.View{
     public class Room:MonoBehaviour{
+        void Start(){
+            RoomItem[] startItems = gameObject.GetComponentsInChildren<RoomItem>();
+            this.items = new List<RoomItem>(startItems);
+        }
         //...
         public List<RoomItem> items;
         public float LeftSide{
@@ -26,6 +30,8 @@ namespace TimeUnity.View{
         }
         public RoomItemData CanUseItem(Vector3 p){
             for(int i=0;i<items.Count;i++){
+                if(!RoomItemManager.Instance.GetItemData(items[i].dataId).canUse)
+                    continue;
                 if(items[i].IsBetweenItem(p-transform.localPosition)){
                     return RoomItemManager.Instance.GetItemData(items[i].dataId);
                 }
