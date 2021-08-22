@@ -55,8 +55,8 @@ namespace TimeUnity.Controller{
             }
         }
 
-        public void UpdatePos(){
-            MainCharacter.Ins.UpdatePos(pos);
+        public void UpdatePos(float layerY = -1f){
+            MainCharacter.Ins.UpdatePos(pos,(layerY == -1f)?curRoom.transform.localPosition.y:layerY);
             RoomItemData hasItem = curItem;
             if(hasItem != null){
                 ButtonTipManager.Instance.SetTipByItem(hasItem.id);
@@ -67,6 +67,8 @@ namespace TimeUnity.Controller{
 
         public void OnCharUse(){
             if(curItem==null)
+                return;
+            if((!curItem.isSwitch) && (curItem.status == Model.RoomItemStatus.timeWaiting))
                 return;
             if(curItem.status == Model.RoomItemStatus.idle || curItem.status == Model.RoomItemStatus.timeWaiting){
                 curItem.onUse();
@@ -93,9 +95,9 @@ namespace TimeUnity.Controller{
             TimeLineManager.Instance.SetUpdating(this.isUsing);
         }
 
-        public void CharMoveTo(Vector3 pos){
+        public void CharMoveTo(Vector3 pos,float layerY){
             this.pos = pos.x;
-            UpdatePos();
+            UpdatePos(layerY);
         }
 
         public void OnCharSkill(){

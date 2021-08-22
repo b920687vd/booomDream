@@ -12,7 +12,7 @@ namespace TimeUnity.View{
             this.dataId = RoomItemManager.Instance.RegItem(this);
             RoomItemData data = RoomItemManager.Instance.GetItemData(this.dataId);
             data.onUse = ()=>{
-                CharacterManager.Instance.CharMoveTo(moveAim.transform.localPosition + moveAim.transform.parent.localPosition);
+                CharacterManager.Instance.CharMoveTo(moveAim.transform.localPosition + moveAim.transform.parent.localPosition,moveAim.transform.parent.localPosition.y);
             };
             this.animator.PlayStatus("idle");
         }

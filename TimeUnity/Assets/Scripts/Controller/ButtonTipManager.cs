@@ -23,6 +23,8 @@ namespace TimeUnity.Controller{
             RoomItemData itemData = RoomItemManager.Instance.GetItemData(dataId);
             if(itemData == null)
                 return;
+            if((!itemData.isSwitch) && (itemData.status == Model.RoomItemStatus.timeWaiting))
+                return;
             switch(itemData.status){
                 case Model.RoomItemStatus.idle:
                     SetTip(itemData.keyUse,itemData.descUse);

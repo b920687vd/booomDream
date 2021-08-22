@@ -27,9 +27,9 @@ namespace TimeUnity.View{
             }
         }
 
-        public void UpdatePos(float pos){
-            Vector3 pVec = new Vector3(transform.localPosition.x,transform.localPosition.y,transform.localPosition.z);
-            Vector3 viewP = new Vector3(pos,0,0);
+        public void UpdatePos(float pos,float roomY){
+            Vector3 pVec = new Vector3(transform.localPosition.x,roomY -380,transform.localPosition.z);
+            Vector3 viewP = new Vector3(pos,roomY,0);
             pVec.x = pos;
             transform.localPosition = pVec;
             RoomLayer.Ins.SeePos(viewP);
