@@ -91,4 +91,12 @@ namespace TimeUnity.Model
             }
         }
     }
+
+    public class RoomItemScoreData{
+        public string id;
+        public string scoreMod;
+        public float scoreNotUse;
+        public float scoreUsing;
+        public float scoreComplete;
+    }
 }

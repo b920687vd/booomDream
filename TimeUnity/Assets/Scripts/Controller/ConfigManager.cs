@@ -22,6 +22,7 @@ namespace TimeUnity.Controller
         }
 
         public Dictionary<string, RoomItemData> configRoomItemData;
+        public Dictionary<string,RoomItemScoreData> configRoomItemScoreData;
 
         public void Init()
         {
@@ -31,6 +32,7 @@ namespace TimeUnity.Controller
         protected void LoadRoomItemData()
         {
             configRoomItemData = new Dictionary<string, RoomItemData>();
+            configRoomItemScoreData = new Dictionary<string, RoomItemScoreData>();
             CSVReader reader = new CSVReader();
             reader.ReadFile("Resources/Config/roomItems.csv");
             for (int i = reader.Length-1; i >= 0; i--)
